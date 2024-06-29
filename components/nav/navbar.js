@@ -12,10 +12,8 @@ const NavBar = () => {
   useEffect(() => {
     async function getUsername() {
       try {
-        // const { email } = await magic.user.getMetadata();
         const { email, issuer } = await magic.user.getMetadata();
         const didToken = await magic.user.getIdToken();
-        // console.log({ didToken });
         if (email) {
           setUsername(email);
         }
@@ -37,9 +35,6 @@ const NavBar = () => {
     e.preventDefault();
 
     try {
-      // await magic.user.logout();
-      // console.log(await magic.user.isLoggedIn());
-      // router.push("/login");
       const response = await fetch("/api/logout", {
         method: "POST",
         headers: {
